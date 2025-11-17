@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Attendance — BANAGA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Smart Attendance</div>
+    <nav>
+      <button id="nav-login" class="btn">Login</button>
+      <button id="nav-register" class="btn ghost">Register</button>
+    </nav>
+  </header>
+
+  <main id="main-root">
+    <!-- Hero / Home -->
+    <section id="home" class="page center">
+      <div class="card hero">
+        <h1>Smart Student Attendance System</h1>
+        <p class="muted">Automatic attendance using face recognition — demo UI by <strong>ABDURRAHMAN RABIU BANAGA</strong></p>
+        <div class="actions">
+          <button id="get-started" class="btn primary">Get Started</button>
+          <button id="learn-more" class="btn">Learn More</button>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <h3>Project Owner</h3>
+        <p class="owner-name">ABDURRAHMAN RABIU BANAGA</p>
+        <p>BSc. Software Engineering — Al-Qalam University Katsina (2026)</p>
+      </div>
+    </section>
+
+    <!-- Auth Pages -->
+    <section id="auth" class="page hidden">
+      <div class="auth-grid">
+        <form id="login-form" class="card small">
+          <h2>Login</h2>
+          <label>Email</label>
+          <input id="login-email" type="email" placeholder="you@university.edu" required>
+          <label>Password</label>
+          <input id="login-pass" type="password" placeholder="••••••" required>
+          <button class="btn primary" type="submit">Login</button>
+        </form>
+
+        <form id="register-form" class="card small hidden">
+          <h2>Register Student</h2>
+          <label>Full name</label>
+          <input id="reg-name" type="text" placeholder="Full name" required>
+          <label>Student ID</label>
+          <input id="reg-id" type="text" placeholder="e.g. STU2026001" required>
+          <label>Email</label>
+          <input id="reg-email" type="email" placeholder="you@university.edu" required>
+          <label>Upload Photo</label>
+          <input id="reg-photo" type="file" accept="image/*">
+          <button class="btn" id="reg-sim">Register (simulate)</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="page hidden">
+      <aside class="sidebar">
+        <div class="sidebar-brand">BANAGA</div>
+        <ul>
+          <li><button class="side-btn" data-page="overview">Overview</button></li>
+          <li><button class="side-btn" data-page="attendance">Attendance</button></li>
+          <li><button class="side-btn" data-page="students">Students</button></li>
+          <li><button class="side-btn" data-page="reports">Reports</button></li>
+          <li><button id="logout" class="side-logout">Logout</button></li>
+        </ul>
+      </aside>
+
+      <div class="content">
+        <div id="overview" class="card page-section">
+          <h2>Welcome, <span id="display-name">Admin</span></h2>
+          <p class="muted">Quick stats and recent attendance.</p>
+          <div class="stats">
+            <div class="stat">Students<br><strong id="stat-students">0</strong></div>
+            <div class="stat">Today’s Attendance<br><strong id="stat-today">0</strong></div>
+            <div class="stat">Classes<br><strong id="stat-classes">0</strong></div>
+          </div>
+        </div>
+
+        <div id="attendance" class="card page-section hidden">
+          <h2>Take Attendance</h2>
+          <p class="muted">Use camera to capture student faces. This demo shows capture flow only.</p>
+
+          <div class="camera-wrap">
+            <video id="video" autoplay playsinline></video>
+            <canvas id="capture-canvas" class="hidden"></canvas>
+          </div>
+
+          <div class="cam-controls">
+            <button id="start-camera" class="btn">Start Camera</button>
+            <button id="capture" class="btn primary">Capture</button>
+            <button id="stop-camera" class="btn ghost">Stop</button>
+          </div>
+
+          <div id="capture-result" class="capture-result"></div>
+
+          <div class="hint card muted small">
+            <strong>Note:</strong> Face recognition is not implemented in this UI. Integrate a library like <em>face-api.js</em> or an API to compare photos and mark attendance.
+          </div>
+        </div>
+
+        <div id="students" class="card page-section hidden">
+          <h2>Students</h2>
+          <p class="muted">Registered students (simulated).</p>
+          <table class="table" id="students-table">
+            <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Photo</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div id="reports" class="card page-section hidden">
+          <h2>Reports</h2>
+          <p class="muted">Attendance reports (export later).</p>
+          <div class="muted">Export & printing features to be added in backend stage.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    © 2025 — Smart Attendance • Demo UI by ABDURRAHMAN RABIU BANAGA
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
